@@ -1,0 +1,746 @@
+```css
+/* =====================================================
+   BASIC SETTINGS
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+    BODY
+
+    Controls the overall page appearance.
+*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #e8eef5;
+
+    color: #333;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   MAIN GRID
+   ===================================================== */
+
+
+/*
+    THIS IS THE MOST IMPORTANT PART.
+
+    display: grid;
+
+    Turns the .resume container into a CSS GRID.
+*/
+
+.resume {
+
+    display: grid;
+
+
+    /*
+        EXTRA LARGE SCREEN
+
+        Create 12 equal columns.
+
+        repeat(12, 1fr)
+
+        means:
+
+        1fr 1fr 1fr 1fr 1fr 1fr
+        1fr 1fr 1fr 1fr 1fr 1fr
+
+        Visual representation:
+
+        |1|2|3|4|5|6|7|8|9|10|11|12|
+    */
+
+    grid-template-columns: repeat(12, 1fr);
+
+
+    /*
+        Space between grid items.
+    */
+
+    gap: 20px;
+
+
+    /*
+        Maximum width of the resume.
+    */
+
+    max-width: 1200px;
+
+
+    /*
+        Centers the resume.
+    */
+
+    margin: 30px auto;
+
+
+    /*
+        White background.
+    */
+
+    background: white;
+
+
+    /*
+        Space inside the main grid.
+    */
+
+    padding: 20px;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+
+/*
+    HEADER OCCUPIES ALL 12 COLUMNS.
+
+    span 12 means:
+
+    1 + 1 + 1 + 1 + 1 + 1
+    + 1 + 1 + 1 + 1 + 1 + 1
+
+    = 12
+*/
+
+.header {
+
+    grid-column: span 12;
+
+    background: #1769aa;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    border-radius: 8px;
+}
+
+
+.header h1 {
+    font-size: 40px;
+}
+
+
+.header h3 {
+    font-size: 20px;
+
+    font-weight: normal;
+}
+
+
+.contact {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   GENERAL BOX STYLING
+   ===================================================== */
+
+
+.box {
+
+    background: #f7faff;
+
+    padding: 25px;
+
+    border-radius: 8px;
+
+    border-left: 5px solid #1769aa;
+}
+
+
+.box h2 {
+
+    color: #1769aa;
+
+    margin-bottom: 15px;
+
+    border-bottom: 2px solid #1769aa;
+
+    padding-bottom: 5px;
+}
+
+
+.box h3 {
+
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   EXTRA LARGE SCREEN
+   1200px AND ABOVE
+   ===================================================== */
+
+
+/*
+    OUR GRID HAS 12 COLUMNS.
+
+    We want FOUR sections across one row.
+
+    Therefore:
+
+        12 ÷ 4 = 3
+
+    So each section gets:
+
+        3 columns
+        3 columns
+        3 columns
+        3 columns
+
+    Visual:
+
+    |   3   |   3   |   3   |   3   |
+    | ABOUT | SKILL | EDU   | EXP   |
+
+    This is what your teacher is asking for.
+*/
+
+
+.about {
+
+    grid-column: span 3;
+}
+
+
+.skills {
+
+    grid-column: span 3;
+}
+
+
+.education {
+
+    grid-column: span 3;
+}
+
+
+.experience {
+
+    grid-column: span 3;
+}
+
+
+/*
+    Projects and Languages are also divided:
+
+        6 + 6 = 12
+
+    Therefore they appear side-by-side.
+*/
+
+.projects {
+
+    grid-column: span 6;
+}
+
+
+.languages {
+
+    grid-column: span 6;
+}
+
+
+/*
+    Footer occupies the entire grid.
+*/
+
+.footer {
+
+    grid-column: span 12;
+
+    background: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 15px;
+
+    border-radius: 8px;
+}
+
+
+/* =====================================================
+   LARGE SCREEN
+   992px - 1199px
+   ===================================================== */
+
+
+/*
+    NOW THE GRID CHANGES FROM:
+
+        12 columns
+             ↓
+        10 columns
+
+    This line is responsible for changing the GRID SIZE.
+*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .resume {
+
+        grid-template-columns: repeat(10, 1fr);
+
+    }
+
+
+    /*
+        Header now needs all 10 columns.
+    */
+
+    .header {
+
+        grid-column: span 10;
+
+    }
+
+
+    /*
+        Four sections cannot each have exactly
+        2.5 columns.
+
+        Therefore we use:
+
+        3 + 2 + 3 + 2 = 10
+
+        This keeps the layout responsive.
+    */
+
+    .about {
+
+        grid-column: span 3;
+
+    }
+
+    .skills {
+
+        grid-column: span 2;
+
+    }
+
+    .education {
+
+        grid-column: span 3;
+
+    }
+
+    .experience {
+
+        grid-column: span 2;
+
+    }
+
+
+    /*
+        Projects + Languages:
+
+        5 + 5 = 10
+    */
+
+    .projects {
+
+        grid-column: span 5;
+
+    }
+
+    .languages {
+
+        grid-column: span 5;
+
+    }
+
+
+    .footer {
+
+        grid-column: span 10;
+
+    }
+
+}
+
+
+/* =====================================================
+   MEDIUM SCREEN
+   768px - 991px
+   ===================================================== */
+
+
+/*
+    GRID CHANGES:
+
+        10 columns
+             ↓
+         8 columns
+
+    This is caused by:
+
+        repeat(8, 1fr)
+*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .resume {
+
+        grid-template-columns: repeat(8, 1fr);
+
+    }
+
+
+    .header {
+
+        grid-column: span 8;
+
+    }
+
+
+    /*
+        Now we divide the 8-column grid
+        into two equal parts:
+
+        4 + 4 = 8
+
+        So two boxes appear on each row.
+    */
+
+    .about {
+
+        grid-column: span 4;
+
+    }
+
+    .skills {
+
+        grid-column: span 4;
+
+    }
+
+
+    .education {
+
+        grid-column: span 4;
+
+    }
+
+    .experience {
+
+        grid-column: span 4;
+
+    }
+
+
+    .projects {
+
+        grid-column: span 4;
+
+    }
+
+    .languages {
+
+        grid-column: span 4;
+
+    }
+
+
+    .footer {
+
+        grid-column: span 8;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL SCREEN
+   576px - 767px
+   ===================================================== */
+
+
+/*
+    GRID CHANGES:
+
+        8 columns
+             ↓
+        6 columns
+*/
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    .resume {
+
+        grid-template-columns: repeat(6, 1fr);
+
+        margin: 15px;
+
+    }
+
+
+    .header {
+
+        grid-column: span 6;
+
+    }
+
+
+    /*
+        6 columns are divided into:
+
+        3 + 3 = 6
+
+        So two boxes appear side-by-side.
+    */
+
+    .about {
+
+        grid-column: span 3;
+
+    }
+
+    .skills {
+
+        grid-column: span 3;
+
+    }
+
+
+    .education {
+
+        grid-column: span 3;
+
+    }
+
+    .experience {
+
+        grid-column: span 3;
+
+    }
+
+
+    /*
+        Projects and Languages each
+        get the entire 6-column width.
+    */
+
+    .projects {
+
+        grid-column: span 6;
+
+    }
+
+    .languages {
+
+        grid-column: span 6;
+
+    }
+
+
+    .footer {
+
+        grid-column: span 6;
+
+    }
+
+
+    /*
+        Make the name smaller.
+    */
+
+    .header h1 {
+
+        font-size: 32px;
+
+    }
+
+
+    /*
+        Stack contact information vertically.
+    */
+
+    .contact {
+
+        flex-direction: column;
+
+        gap: 5px;
+
+    }
+
+}
+
+
+/* =====================================================
+   EXTRA SMALL SCREEN
+   BELOW 576px
+   ===================================================== */
+
+
+/*
+    FINAL CHANGE:
+
+        6 columns
+             ↓
+        4 columns
+
+    The grid is now:
+
+        |1|2|3|4|
+*/
+
+@media (max-width: 575px) {
+
+    .resume {
+
+        grid-template-columns: repeat(4, 1fr);
+
+        margin: 0;
+
+        padding: 10px;
+
+        gap: 12px;
+
+    }
+
+
+    /*
+        Header uses all 4 columns.
+    */
+
+    .header {
+
+        grid-column: span 4;
+
+        padding: 30px 15px;
+
+    }
+
+
+    /*
+        On a very small screen, each section
+        gets the entire width.
+
+        4 columns = full width.
+    */
+
+    .about {
+
+        grid-column: span 4;
+
+    }
+
+    .skills {
+
+        grid-column: span 4;
+
+    }
+
+    .education {
+
+        grid-column: span 4;
+
+    }
+
+    .experience {
+
+        grid-column: span 4;
+
+    }
+
+    .projects {
+
+        grid-column: span 4;
+
+    }
+
+    .languages {
+
+        grid-column: span 4;
+
+    }
+
+
+    .footer {
+
+        grid-column: span 4;
+
+    }
+
+
+    /*
+        Smaller text for smaller screens.
+    */
+
+    .header h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .header h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    /*
+        Contact information becomes vertical.
+    */
+
+    .contact {
+
+        flex-direction: column;
+
+        gap: 3px;
+
+    }
+
+
+    /*
+        Reduce the padding inside boxes
+        so content has more space.
+    */
+
+    .box {
+
+        padding: 18px;
+
+    }
+
+
+    .box h2 {
+
+        font-size: 20px;
+
+    }
+
+}
